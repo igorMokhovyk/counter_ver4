@@ -10,8 +10,10 @@ function PlusAndMinus(props) {
     return (
         <div>
             <ul>
-                <button disabled={ props.index === 0} onClick={() => props.buttonUp(props.index)}>Up</button>
-                <button disabled={ props.index === props.array.length - 1} onClick={() => props.buttonDown(props.index)}>Down</button>
+                <button disabled={props.index === 0} onClick={() => props.buttonUp(props.index)}>Up</button>
+                <button disabled={props.index === props.array.length - 1}
+                        onClick={() => props.buttonDown(props.index)}>Down
+                </button>
                 {listTitle}
                 <button onClick={() => props.counterPlusMinus(props.id, 1)}>-</button>
                 {listCount}
