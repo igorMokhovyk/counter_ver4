@@ -20,7 +20,7 @@ function App() {
 
     const counterPlusMinus = ((id, value) => {
         const counterPlusMinusCopy = counter.map((el, index) => {
-            if (el.id === id){
+            if (el.id === id) {
                 return {...el, count: el.count - value}
             }
             return el;
@@ -29,12 +29,29 @@ function App() {
     });
 
 
+    const buttonUp = (index) => {
+        const buttonUpCopy = [...counter]
+        const newButtonUpCopy = buttonUpCopy[index];
+        buttonUpCopy[index] = buttonUpCopy[index - 1];
+        buttonUpCopy[index - 1] = newButtonUpCopy;
+        setCounter(buttonUpCopy);
+        console.log(buttonUp, index)
+    }
+
+    const buttonDown = (index) => {
+        const buttonDownCopy = [...counter]
+        const newButtonDownCopy = buttonDownCopy[index];
+        buttonDownCopy[index] = buttonDownCopy[index + 1];
+        buttonDownCopy[index + 1] = newButtonDownCopy;
+        setCounter(buttonDownCopy);
+        console.log(buttonDown, index)
+    }
+
+
     const counterDeleteById = (id) => {
         const counterDeleteByIdCopy = counter.filter(el => el.id !== id);
         setCounter(counterDeleteByIdCopy);
     }
-
-
 
 
     return (
@@ -44,7 +61,10 @@ function App() {
             <header className="App-header">
                 <InputAndAddButton/>
                 <br/>
-                {counter.map(el => <PlusAndMinus counterDeleteById={counterDeleteById} id={el.id} counterPlusMinus={counterPlusMinus} listCount={el.count} listTitle={el.title}  />)}
+                {counter.map((el, index, array) => <PlusAndMinus buttonDown={buttonDown} buttonUp={buttonUp}
+                                                          counterDeleteById={counterDeleteById} id={el.id}
+                                                          counterPlusMinus={counterPlusMinus} listCount={el.count}
+                                                          listTitle={el.title} index={index} array={array}/>)}
 
             </header>
         </div>
