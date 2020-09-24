@@ -11,18 +11,21 @@ function PlusAndMinus(props) {
         <div>
             <ul>
 
-                <button disabled={props.index === 0} onClick={() => props.buttonUp(props.index)}>Up</button>
-                <button disabled={props.index === props.array.length - 1}
+
+                {listTitle}
+    {props.numberOfButtons.map(el => <button className='btn-dark rounded '
+                                             onClick={() => props.counterPlusMinus(props.id, el)}>{-el}</button>).reverse()}
+    {listCount}
+    {props.numberOfButtons.map(el => <button className='btn-dark rounded '
+                                             onClick={() => props.counterPlusMinus(props.id, -el)}>+{+el}</button>)}
+
+    <button className='btn btn-danger position-sticky' onClick={() => props.counterDeleteById(props.id)}>Delete</button>
+                <button className='btn btn-light' disabled={props.index === 0}
+                        onClick={() => props.buttonUp(props.index)}>Up</button>
+                <button className='btn btn-light' disabled={props.index === props.array.length - 1}
                         onClick={() => props.buttonDown(props.index)}>Down
                 </button>
-                {listTitle}
-                {props.numberOfButtons.map(el => <button
-                    onClick={() => props.counterPlusMinus(props.id, 1)}>{-el}</button>).reverse()}
-                {listCount}
-                {props.numberOfButtons.map(el => <button
-                    onClick={() => props.counterPlusMinus(props.id, -1)}>{+el}</button>)}
 
-                <button onClick={() => props.counterDeleteById(props.id)}>Delete</button>
             </ul>
         </div>
     )

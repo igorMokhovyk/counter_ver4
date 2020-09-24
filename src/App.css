@@ -15,8 +15,14 @@
 }
 
 .App-h1 {
-    font-family: Menlo;
-    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
-    -webkit-background-clip: text;
-    color: transparent;
+    font-family: Serif;
+    color: black;
+
+}
+
+.PlusAndMinusButtons-buttonPlusMinus {
+    float: bottom;
+    border: 1px solid green;
+    padding-right: 10px;
+    border-radius: 8px;
 }

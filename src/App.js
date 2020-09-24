@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-//import {v4 as uuidv4} from 'uuid';
 import './App.css';
 import PlusAndMinus from "./PlusAndMinusButtons";
 import InputAndAddButton from "./InputAndAddButton";
@@ -77,7 +76,7 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <h1 className='App-h1'>
-                    Color Mixer
+                    COUNTER
                 </h1>
                 <InputAndAddButton addButton={addCounter} colorName={colorName}/>
                 <br/>
