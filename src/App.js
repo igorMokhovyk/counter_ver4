@@ -6,9 +6,9 @@ import InputAndAddButton from "./InputAndAddButton";
 
 
 const listCounter = [
-    {id: 1, title: 'green', count: 5, numberOfButtons: 0},
-    {id: 2, title: 'yellow', count: 15, numberOfButtons: 0},
-    {id: 3, title: 'red', count: 25, numberOfButtons: 0}
+    {id: 1, title: 'green', count: 5, numberOfButtons: [1]},
+    {id: 2, title: 'yellow', count: 15, numberOfButtons: [1]},
+    {id: 3, title: 'red', count: 25, numberOfButtons: [1]}
 ];
 
 
@@ -60,9 +60,13 @@ function App() {
         setCounter(counterDeleteByIdCopy);
     }
 
-    const addCounter = (inputValue, inputNameOfColor) => {
+    const addCounter = (inputValue, inputNameOfColor, inputNumbersOfButtons) => {
+        const newButtons = [];
+        for ( let i = 1; i <= inputNumbersOfButtons; i++){
+            newButtons.push(i)
+        }
         const addButtonCopy = [...counter];
-        addButtonCopy.push({id: Math.random(), title: inputNameOfColor, count: inputValue});
+        addButtonCopy.push({id: Math.random(), title: inputNameOfColor, count: inputValue, numberOfButtons: newButtons});
         setCounter(addButtonCopy);
     }
 
@@ -72,13 +76,18 @@ function App() {
 
         <div className="App">
             <header className="App-header">
+                <h1 className='App-h1'>
+                    Color Mixer
+                </h1>
                 <InputAndAddButton addButton={addCounter} colorName={colorName}/>
                 <br/>
-                {counter.map((el, index, array) => <PlusAndMinus buttonDown={buttonDown} buttonUp={buttonUp}
+                {counter.map((el, index, array) => <PlusAndMinus numberOfButtons={el.numberOfButtons}
+                                                                 buttonDown={buttonDown} buttonUp={buttonUp}
                                                                  counterDeleteById={counterDeleteById} id={el.id}
                                                                  counterPlusMinus={counterPlusMinus}
                                                                  listCount={el.count}
-                                                                 listTitle={el.title} index={index} array={array} key={el.id}/> )}
+                                                                 listTitle={el.title} index={index} array={array}
+                                                                 key={el.id}/>)}
 
             </header>
         </div>
